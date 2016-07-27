@@ -1,0 +1,158 @@
+<html>
+ <link href="bootstrap.min.css" rel="stylesheet">
+<head>
+	<title>Jquery Learning</title>
+</head>
+	<body>
+		<div class="">
+			<div class="col-md-12">
+				<span></span>
+			</div>
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading"><strong>Buttons</strong></div>
+					<div class="panel-body">
+						<button class="btn btn-danger" onclick="location.reload()">Refresh</button>
+						<button id="anId" class="btn btn-info">Hide me through id</button>
+						<button class="aClass btn btn-success">Hide me through class</button>
+						<button class="btn btn-warning">This is a warning button</button>
+						<button class="btn btn-default">This is button default</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading getThisDiv"><strong>Getting Contents</strong> (using text(),html() & value() methods)</div>
+					<div class="panel-body" id="panel-toggle">
+
+						<div class="col-md-12 form-inline">
+							<a id="w3s" href="https://www.youtube.com/">Go to www.youtube.com</a>
+							<p id="gettingText">The quick brown fox jumps over the lazy dog near the bank of the river.</p>
+							<label for="">Get my value: </label><input id="getMyValue" type="text" class="form-control">&nbsp;&nbsp;
+							<button class="btn btn-success" id="getContent">Send</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading"><strong>Getting Elements values</strong></div>
+					<div class="panel-body">
+
+						<div class="col-md-12 form-inline">
+							<label for="">Lastname: </label><input id="focused" type="text" class="form-control" name="lastname">&nbsp;&nbsp;
+							<label for="">Middlename: </label><input id="focused" type="text" class="form-control" name="middlename">&nbsp;&nbsp;
+							<label for="">Firstname: </label><input id="focused" type="text" class="form-control" name="firstname">
+							<button class="btn btn-success" id="send">Send</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Table</div>
+					<div class="panel-body">
+						<table class="table table-condensed">
+						  <tr>
+							<th>Mouse Events</th>
+							<th>Keyboard Events</th>
+							<th>Form Events</th>
+							<th>Document/Window Events</th>
+						  </tr>
+						  <tr>
+							<td>click</td>
+							<td>keypress</td>
+							<td>submit</td>
+							<td>load</td>
+						  </tr>
+						  <tr>
+							<td>dbclick</td>
+							<td>keydown</td>
+							<td>change</td>
+							<td>resize</td>
+						  </tr>
+						  <tr>
+							<td>mouseenter</td>
+							<td>keyup</td>
+							<td>focus</td>
+							<td>scroll</td>
+						  </tr>
+						  <tr>
+							<td>mouseleave</td>
+							<td></td>
+							<td>blur</td>
+							<td>unload</td>
+						  </tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script src="jquery-3.1.0.js"></script>
+	<script src="bootstrap.min.js"></script>
+</html>
+
+<script>
+	$(document).ready(function(){
+
+		$("tr:even").css("background-color", "#cccccc");
+		$("tr:first").css("background-color", "white")
+
+		$("#getContent").click(function(){
+			var text = $("#gettingText").text();
+			var html = $("#getThisDiv").html();
+			var val  = $("#getMyValue").val();
+			var attr = $("#w3s").attr("href");
+
+			var getContent =
+			{
+				text : text,
+				html : html,
+				val  : val,
+				attr : attr
+			}
+			console.log(getContent);
+		});
+
+		$(".getThisDiv").click(function(){
+			$("#panel-toggle").slideToggle("slow");
+		});
+
+		$("#send").click(function(){
+			var profile = {
+				name       : $("input[name='firstname']").val(),
+				middlename : $("input[name='middlename']").val(),
+				lastname   : $("input[name='lastname']").val()
+			}
+			console.log(profile);
+		});
+
+		$("#focused").on({
+			focus: function(){
+				$(this).css("background-color","#cccccc");
+			},
+			blur: function(){
+				$(this).css("background-color","white");
+			}
+		});
+
+		$("p").click(function(){
+			$(this).hide("slow");
+		});
+
+		$("#anId").click(function(){
+			$(this).hide();
+		});
+
+		$(".aClass").click(function(){
+			$(this).hide("slow");
+		});
+
+	});
+</script>
