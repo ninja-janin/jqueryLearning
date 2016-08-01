@@ -1,5 +1,9 @@
 <html>
- <link href="bootstrap.min.css" rel="stylesheet">
+ <!-- <link href="bootstrap.min.css" rel="stylesheet"> -->
+ <link href="bower_components/bootswatch/cyborg/bootstrap.min.css" rel="stylesheet">
+ <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+
 <head>
 	<title>Jquery Learning</title>
 </head>
@@ -12,11 +16,26 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"><strong>Buttons</strong></div>
 					<div class="panel-body">
+
+
 						<button class="btn btn-danger" onclick="location.reload()">Refresh</button>
 						<button id="anId" class="btn btn-info">Hide me through id</button>
 						<button class="aClass btn btn-success">Hide me through class</button>
 						<button class="btn btn-warning">This is a warning button</button>
 						<button class="btn btn-default">This is button default</button>
+
+						<div class="btn-group">
+						  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Button Default <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+						  </ul>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -91,68 +110,47 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading"><strong>Set text(),html(),val()</strong></div>
+					<div class="panel-body">
+
+						<div class="col-md-12">
+							<p id="setText">This is a paragraph.</p>
+						</div>
+
+						<div class="col-md-12">
+							<p id="setHtml">This is another a paragraph.</p>
+						</div>
+
+						<div class="col-md-12 form-inline">
+							<div class="form-group">
+								<label for="">Name:</label>
+								<input id="setValue" type="text" class="form-control">
+
+								<div class="input-append date" id="datepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+								<label for="">Date:</label>
+								  <input class="span2 form-control" size="16" type="text" value="">
+								  <span class="add-on"><i class="fa fa-calendar form-control" aria-hidden="true"></i></span>
+								</div>
+
+								<button class="btn btn-success" id="set-text">Set Text</button>
+								<button class="btn btn-success" id="set-html">Set HTML</button>
+								<button class="btn btn-success" id="set-value">Set Value</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</body>
 
 	<script src="jquery-3.1.0.js"></script>
+	<script src="jqueryLearning.js"></script>
+	<script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 	<script src="bootstrap.min.js"></script>
+
 </html>
 
-<script>
-	$(document).ready(function(){
 
-		$("tr:even").css("background-color", "#cccccc");
-		$("tr:first").css("background-color", "white")
-
-		$("#getContent").click(function(){
-			var text = $("#gettingText").text();
-			var html = $("#getThisDiv").html();
-			var val  = $("#getMyValue").val();
-			var attr = $("#w3s").attr("href");
-
-			var getContent =
-			{
-				text : text,
-				html : html,
-				val  : val,
-				attr : attr
-			}
-			console.log(getContent);
-		});
-
-		$(".getThisDiv").click(function(){
-			$("#panel-toggle").slideToggle("slow");
-		});
-
-		$("#send").click(function(){
-			var profile = {
-				name       : $("input[name='firstname']").val(),
-				middlename : $("input[name='middlename']").val(),
-				lastname   : $("input[name='lastname']").val()
-			}
-			console.log(profile);
-		});
-
-		$("#focused").on({
-			focus: function(){
-				$(this).css("background-color","#cccccc");
-			},
-			blur: function(){
-				$(this).css("background-color","white");
-			}
-		});
-
-		$("p").click(function(){
-			$(this).hide("slow");
-		});
-
-		$("#anId").click(function(){
-			$(this).hide();
-		});
-
-		$(".aClass").click(function(){
-			$(this).hide("slow");
-		});
-
-	});
-</script>
